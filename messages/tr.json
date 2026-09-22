@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "Emrah Şahin | Yazılım Mühendisi",
-    "description": "Yapay zeka, bilgisayarlı görü ve agentic workflows alanında çalışan yazılım mühendisi portfolyosu."
+    "title": "Emrah Şahin | Yazılım Mühendisi (AI, OOP & Full-Stack)",
+    "description": "LLMs, Agentic Workflows, Computer Vision, C++, Java, Python, TypeScript ve modern web mimarileri üzerine çalışan Yazılım Mühendisi portfolyosu."
   },
   "nav": {
     "about": "Hakkımda",
@@ -14,23 +14,19 @@
   "hero": {
     "greeting": "Merhaba, ben",
     "name": "Emrah Şahin",
-    "title": "Yazılım Mühendisi | AI & Computer Vision",
-    "subtitle": "LLM, Generative AI ve Agentic Workflows alanında ölçeklenebilir, üretime hazır yapay zeka çözümleri geliştiriyorum.",
+    "title": "Yazılım Mühendisi — LLMs, Agentic AI & Full-Stack",
+    "subtitle": "LLMs, Generative AI ve Agentic Workflows odaklı yapay zeka çözümlerinin yanı sıra C++ ve Java ile sağlam OOP mimarileri, TypeScript & Next.js ile modern uçtan uca sistemler geliştiriyorum.",
     "ctaProjects": "Projelerimi Gör",
     "ctaContact": "İletişime Geç"
   },
   "about": {
     "title": "Hakkımda",
-    "summary": "Yazılım Mühendisi olarak LangChain, LangGraph ve LlamaIndex tabanlı AI ajanları geliştiriyorum. Havelsan stajımda modern yapay zeka modellerinin teknik ve etik performans ölçümünü yürüterek halüsinasyon azaltma ve model izleme konularında deneyim kazandım. C++ ve Java ile OOP altyapımı güçlendirirken, Python, FastAPI ve SQL yetkinliklerimle ölçeklenebilir AI çözümleri geliştirmeyi hedefliyorum.",
+    "summary": "Kocaeli Üniversitesi Bilgisayar Mühendisliği Yüksek Lisans öğrencisi ve Yazılım Mühendisliği mezunuyum. Büyük Dil Modelleri (LLMs), Üretken Yapay Zeka ve Ajan İş Akışları (Agentic Workflows) alanlarında uzmanlaşırken; LangChain, LangGraph ve LlamaIndex ile otonom AI ajanları geliştiriyorum. Havelsan stajımda modern yapay zeka modellerinin teknik ve etik benchmark değerlendirmelerini yaparak halüsinasyon azaltma ve model izleme konularında deneyim kazandım. C++ ve Java ile güçlü Nesne Yönelimli Programlama (OOP) temeline; Python, FastAPI, Next.js, TypeScript ve SQL yetkinlikleriyle birleşen ölçeklenebilir ve üretime hazır yazılım geliştirme vizyonuna sahibim.",
     "education": {
-      "title": "Eğitim",
-      "degree": "Yazılım Mühendisliği",
-      "university": "Kocaeli Sağlık ve Teknoloji Üniversitesi",
-      "period": "2022 – 2026",
-      "gpa": "GPA: 3.53",
-      "scholarship": "Tam Burslu",
-      "thesis": "TÜBİTAK 2209 Destekli Tez"
-    }
+      "title": "Eğitim & Akademik Geçmiş"
+    },
+    "courseworkTitle": "Öne Çıkan Dersler",
+    "languagesTitle": "Diller"
   },
   "experience": {
     "title": "Deneyim"
@@ -43,12 +39,13 @@
     "showLess": "Daha az göster"
   },
   "skills": {
-    "title": "Beceriler",
+    "title": "Beceriler & Yetkinlikler",
     "categories": {
-      "programming": "Programlama",
-      "ai": "AI & Machine Learning",
-      "web": "Web Geliştirme",
-      "tools": "Araçlar"
+      "languages": "Diller & OOP",
+      "ai": "AI, ML & Agentic Systems",
+      "backend_web": "Backend & Web Geliştirme",
+      "data": "Veri Analitiği & Mühendisliği",
+      "tools": "Araçlar & DevOps"
     }
   },
   "contact": {
@@ -74,4 +71,4 @@
     "builtWith": "Next.js ile yapıldı",
     "rights": "Tüm hakları saklıdır."
   }
-}
+}

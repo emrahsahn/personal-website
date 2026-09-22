@@ -1,3 +1,110 @@
+export interface EducationItem {
+  degree: { tr: string; en: string };
+  university: { tr: string; en: string };
+  period: { tr: string; en: string };
+  level: { tr: string; en: string };
+  gpa?: string;
+  scholarship?: { tr: string; en: string };
+  status?: { tr: string; en: string };
+  thesis?: { tr: string; en: string };
+  coursework?: { tr: string[]; en: string[] };
+}
+
+export interface SpokenLanguageItem {
+  name: { tr: string; en: string };
+  level: { tr: string; en: string };
+  tag: string;
+}
+
+export const spokenLanguages: SpokenLanguageItem[] = [
+  {
+    name: { tr: "Türkçe", en: "Turkish" },
+    level: { tr: "Anadil", en: "Native" },
+    tag: "Native",
+  },
+  {
+    name: { tr: "İngilizce", en: "English" },
+    level: {
+      tr: "B2 (Okuma) • B1 (Dinleme, Konuşma, Yazma)",
+      en: "B2 (Reading) • B1 (Listening, Speaking, Writing)",
+    },
+    tag: "B2 / B1",
+  },
+  {
+    name: { tr: "Almanca", en: "German" },
+    level: { tr: "A1 (Temel)", en: "A1 (Elementary)" },
+    tag: "A1",
+  },
+];
+
+export const educations: EducationItem[] = [
+  {
+    degree: {
+      tr: "Bilgisayar Mühendisliği",
+      en: "Computer Engineering",
+    },
+    university: {
+      tr: "Kocaeli Üniversitesi",
+      en: "Kocaeli University",
+    },
+    period: {
+      tr: "Temmuz 2026 – Devam Ediyor",
+      en: "Jul 2026 – Present",
+    },
+    level: {
+      tr: "Yüksek Lisans",
+      en: "M.Sc. (In Progress)",
+    },
+    status: {
+      tr: "Kabul Alındı",
+      en: "Admitted",
+    },
+  },
+  {
+    degree: {
+      tr: "Yazılım Mühendisliği",
+      en: "Software Engineering",
+    },
+    university: {
+      tr: "Kocaeli Sağlık ve Teknoloji Üniversitesi",
+      en: "Kocaeli University of Health and Technology",
+    },
+    period: {
+      tr: "2022 – 2026",
+      en: "2022 – 2026",
+    },
+    level: {
+      tr: "Lisans",
+      en: "B.Sc.",
+    },
+    gpa: "GPA: 3.53 / 4.0",
+    scholarship: {
+      tr: "Tam Burslu",
+      en: "Full Scholarship",
+    },
+    thesis: {
+      tr: "TÜBİTAK 2209 Destekli Tez",
+      en: "TÜBİTAK 2209 Supported Thesis",
+    },
+    coursework: {
+      tr: [
+        "Yapay Zeka & ML",
+        "Nesne Yönelimli Programlama (OOP)",
+        "Veri Yapıları & Algoritmalar",
+        "Bilgisayarlı Görü",
+        "Veritabanı Yönetimi (DBMS)",
+      ],
+      en: [
+        "Artificial Intelligence & ML",
+        "Object-Oriented Programming (OOP)",
+        "Data Structures & Algorithms",
+        "Computer Vision",
+        "Database Management Systems",
+      ],
+    },
+  },
+];
+
 export interface ExperienceItem {
   company: string;
   role: string;
@@ -85,47 +192,89 @@ export interface ProjectItem {
 export const projects: ProjectItem[] = [
   {
     title: {
-      tr: "TÜBİTAK 2209 - Veri Analitiği & Karar Destek Sistemi",
-      en: "TÜBİTAK 2209 - Data Analytics & Decision Support",
+      tr: "Zorlu Hava Koşullarında Görüntü İyileştirme (Bitirme Tezi)",
+      en: "Image Enhancement in Challenging Weather Conditions (Graduation Thesis)",
     },
     description: {
-      tr: "Ham verilerin toplanması, temizlenmesi ve karar destek sistemi prototipi. TÜBİTAK onaylı proje.",
-      en: "Data collection, cleaning, and decision support system prototype. TÜBİTAK approved project.",
+      tr: "İHA ve otonom sistemler için sis, yağmur ve düşük ışık koşullarını gideren hibrit görüntü restorasyon pipeline'ı (UnifiedPipeline - 21.26–27.81 dB PSNR). Kural tabanlı hava tespit modülü ve Gradio arayüzü ile YOLOv8 tespit performansını doğrudan artıran görev odaklı mimari.",
+      en: "Hybrid image restoration pipeline (UnifiedPipeline) correcting fog, rain, and low-light quality loss for UAV and autonomous systems, combining a rule-based weather detector with HVI-CIDNet, FFA-Net, and DDN restoration models (21.26–27.81 dB PSNR). Delivered via Gradio interface with task-driven YOLOv8 detection integration.",
     },
-    technologies: ["Python", "Pandas", "Scikit-learn", "SQL", "BeautifulSoup"],
-    period: "2024 – 2025",
+    technologies: [
+      "Python",
+      "C++",
+      "PyTorch",
+      "OpenCV",
+      "Gradio",
+      "HVI-CIDNet",
+      "FFA-Net",
+      "DDN",
+      "YOLOv8",
+      "Docker",
+      "Git",
+    ],
+    period: "Oct 2025 – Jun 2026",
+  },
+  {
+    title: {
+      tr: "TÜBİTAK 2209 - Veri Analitiği & Karar Destek Sistemi",
+      en: "TÜBİTAK 2209 - Data Analytics & Intelligent Decision Support System",
+    },
+    description: {
+      tr: "Ham EKG sinyallerinin dalgacık dönüşümü (wavelet) ile gürültüden arındırılması ve çok kanallı zaman serisi verilerinin modüler OOP sınıflarıyla Pandas DataFrame'lerine dönüştürülmesi. Kalp anomalilerini tespit eden TensorFlow derin öğrenme modelleri (TÜBİTAK onaylı).",
+      en: "Processed and denoised raw ECG signals (PTB Diagnostic ECG database) using wavelet transforms, then built modular OOP classes to consolidate multi-channel time-series data into Pandas DataFrames. Designed TensorFlow deep learning models to detect cardiac abnormalities (funded by TÜBİTAK 2209).",
+    },
+    technologies: [
+      "Python",
+      "Pandas",
+      "Scikit-learn",
+      "TensorFlow",
+      "SQL",
+      "OOP",
+      "Data Visualization",
+    ],
+    period: "Jun 2024 – Jun 2025",
   },
   {
     title: {
       tr: "Kişisel Harcama Takip & Bütçe Analitiği",
-      en: "Personal Expense Tracking & Budget Analytics",
+      en: "Personal Expense Tracking & Budget Analytics System",
     },
     description: {
-      tr: "Spring Boot REST API ve Next.js dashboard ile bütçe yönetimi ve harcama analitiği sistemi.",
-      en: "Budget management and expense analytics system with Spring Boot REST API and Next.js dashboard.",
+      tr: "Harcama CRUD, filtreleme, kategori raporlama ve bütçe aşım karar mantığı sunan Spring Boot REST API ve Next.js dashboard. JUnit testleri ve Jakarta Validation ile yüksek kod kalitesi ve veri bütünlüğü.",
+      en: "Built a Spring Boot REST API for expense CRUD, filtering, and category reporting, with budget limit/overspend decision logic and a Next.js dashboard. Ensured code quality and data integrity with JUnit tests and Jakarta Validation.",
     },
     technologies: [
       "Java",
       "Spring Boot",
+      "Spring Data JPA",
+      "H2",
+      "REST API",
       "Next.js",
       "React",
       "TypeScript",
       "Tailwind CSS",
+      "JUnit",
     ],
     period: "Feb 2026 – Apr 2026",
     github: "https://github.com/emrahsahn/Harcama-Takip",
   },
   {
     title: {
-      tr: "LLM Değerlendirme & Benchmarking Sistemi",
-      en: "LLM Evaluation & Benchmarking System",
+      tr: "Meme Kanseri Sınıflandırma Sistemi",
+      en: "Machine Learning-Based Breast Cancer Classification System",
     },
     description: {
-      tr: "Havelsan stajında geliştirilen; toksisite, fairness ve çoklu dil desteği ölçen kapsamlı LLM test altyapısı.",
-      en: "Comprehensive LLM testing infrastructure measuring toxicity, fairness, and multilingual support, developed at Havelsan.",
+      tr: "Tıbbi sınıflandırma görevi için veri temizleme ve öznitelik mühendisliği gerçekleştirildi; Python ve C++ ile modeller geliştirilerek hata matrisi ve AUC/ROC eğrileriyle karşılaştırmalı doğrulandı.",
+      en: "Cleaned data and engineered features for a medical classification task, then developed and compared models in Python and C++, validating performance with confusion matrices and AUC/ROC curves.",
     },
-    technologies: ["Python", "LLMs", "BLEU", "ROUGE", "NLP"],
-    period: "Jul 2025 – Aug 2025",
+    technologies: [
+      "Python",
+      "C++",
+      "Scikit-learn",
+      "Data Preprocessing",
+      "Machine Learning",
+    ],
+    github: "https://github.com/emrahsahn/Breast-Cancer-Classification",
   },
   {
     title: {
@@ -133,12 +282,24 @@ export const projects: ProjectItem[] = [
       en: "Lord of Polymorphism",
     },
     description: {
-      tr: "Nesne yönelimli programlama ve polimorfizm konseptlerini temel alan oyun projesi.",
-      en: "A game project based on object-oriented programming and polymorphism concepts.",
+      tr: "Nesne yönelimli programlama, kalıtım, soyutlama ve polimorfizm konseptlerini derinlemesine uygulayan oyun mimarisi.",
+      en: "A comprehensive game project applying object-oriented programming, inheritance, abstraction, and polymorphism principles.",
     },
-    technologies: ["OOP", "Game Development", "Polymorphism"],
+    technologies: ["C++", "Java", "OOP", "Polymorphism", "Game Development"],
     github: "https://github.com/emrahsahn/lord-of-polymorphism",
     link: "https://lords-of-the-polywarphism-game.vercel.app",
+  },
+  {
+    title: {
+      tr: "LLM Değerlendirme & Benchmarking Sistemi",
+      en: "LLM Evaluation & Benchmarking System",
+    },
+    description: {
+      tr: "Havelsan stajında geliştirilen; toksisite, doğruluk, çoklu dil desteği ve BLEU/ROUGE metrikleri ile 5+ modern AI modelini değerlendiren kapsamlı LLM test altyapısı.",
+      en: "Built a comprehensive LLM testing and benchmarking framework evaluating 5+ modern AI models across toxicity, fairness, multilingual support, and BLEU/ROUGE metrics at Havelsan.",
+    },
+    technologies: ["Python", "LLMs", "LangChain", "BLEU", "ROUGE", "NLP"],
+    period: "Jul 2025 – Aug 2025",
   },
   {
     title: {
@@ -146,24 +307,25 @@ export const projects: ProjectItem[] = [
       en: "Livestock Management System",
     },
     description: {
-      tr: "Kurbanlık hayvan kayıt, takip ve yönetim süreçlerini dijitalleştiren TypeScript tabanlı web uygulaması.",
-      en: "TypeScript-based web application that digitizes sacrifice livestock registration, tracking, and management workflows.",
+      tr: "Kurbanlık hayvan kayıt, takip ve yönetim süreçlerini uçtan uca dijitalleştiren TypeScript tabanlı modern web uygulaması.",
+      en: "TypeScript-based modern web application that digitizes sacrifice livestock registration, tracking, and management workflows end-to-end.",
     },
-    technologies: ["TypeScript", "Next.js", "React", "Tailwind CSS"],
+    technologies: ["TypeScript", "JavaScript", "Next.js", "React", "Tailwind CSS"],
     period: "2026",
     github: "https://github.com/emrahsahn/Sacrifice-Livestock-Tracker",
   },
   {
     title: {
-      tr: "Meme Kanseri Sınıflandırma Sistemi",
-      en: "Breast Cancer Classification System",
+      tr: "Proje Yönetimi için Agent Sistemi",
+      en: "Agent System for Projects",
     },
     description: {
-      tr: "Python ve C++ ile geliştirilen derin öğrenme tabanlı tıbbi görüntü sınıflandırma modeli.",
-      en: "Deep learning-based medical image classification model developed in Python and C++.",
+      tr: "Yazılım projelerinde görev planlama, karar ağaçları ve otonom iş akışı otomasyonu için tasarlanmış AI agent tabanlı yönetim sistemi.",
+      en: "AI agent-based management system designed for task planning, decision trees, and workflow automation in software projects.",
     },
-    technologies: ["Python", "C++", "Scikit-learn", "Deep Learning"],
-    github: "https://github.com/emrahsahn/Breast-Cancer-Classification",
+    technologies: ["Python", "JavaScript", "LangChain", "AI Agents", "REST API"],
+    period: "2026",
+    github: "https://github.com/emrahsahn/Agent-System-for-Projects",
   },
   {
     title: {
@@ -171,10 +333,16 @@ export const projects: ProjectItem[] = [
       en: "Smart Waste Sorting System",
     },
     description: {
-      tr: "Atık türlerini sınıflandırarak geri dönüşümü artırmaya yönelik yapay zeka tabanlı sistem.",
-      en: "AI-powered system that classifies waste types to increase recycling efficiency.",
+      tr: "Atık türlerini bilgisayarlı görü ve derin öğrenme ile anlık sınıflandırarak geri dönüşüm verimliliğini artıran yapay zeka sistemi.",
+      en: "AI-powered system that classifies waste types in real-time using computer vision and deep learning to increase recycling efficiency.",
     },
-    technologies: ["Python", "Deep Learning", "Computer Vision", "PyTorch"],
+    technologies: [
+      "Python",
+      "PyTorch",
+      "Computer Vision",
+      "Deep Learning",
+      "OpenCV",
+    ],
     github: "https://github.com/emrahsahn/akilli-cop-ayristirma-sistemi",
   },
   {
@@ -183,8 +351,8 @@ export const projects: ProjectItem[] = [
       en: "AI-Powered Image Classification",
     },
     description: {
-      tr: "Veri analizi ve derin öğrenme teknikleriyle geliştirilen görüntü sınıflandırma modeli.",
-      en: "Image classification model developed using data analytics and deep learning techniques.",
+      tr: "Veri analizi ve derin öğrenme teknikleriyle geliştirilen yüksek doğruluklu görüntü sınıflandırma modeli.",
+      en: "High-accuracy image classification model developed using data analytics and deep learning techniques.",
     },
     technologies: ["Python", "TensorFlow", "Keras", "OpenCV"],
     github:
@@ -192,24 +360,11 @@ export const projects: ProjectItem[] = [
   },
   {
     title: {
-      tr: "Proje Yönetimi için Agent Sistemi",
-      en: "Agent System for Projects",
-    },
-    description: {
-      tr: "Yazılım projelerinde görev planlama ve otomasyon için tasarlanmış AI agent tabanlı yönetim sistemi.",
-      en: "AI agent-based management system designed for task planning and automation in software projects.",
-    },
-    technologies: ["HTML", "JavaScript", "AI Agents", "LangChain"],
-    period: "2026",
-    github: "https://github.com/emrahsahn/Agent-System-for-Projects",
-  },
-  {
-    title: {
       tr: "Ensemble Learning Deneyleri",
       en: "Ensemble Learning Experiments",
     },
     description: {
-      tr: "Kendi oluşturulan veri setlerinde çeşitli ensemble learning algoritmalarının uygulanması ve karşılaştırılması.",
+      tr: "Kendi oluşturulan veri setlerinde çeşitli ensemble learning algoritmalarının uygulanması ve performans karşılaştırması.",
       en: "Application and comparison of various ensemble learning algorithms on custom-built datasets.",
     },
     technologies: ["Python", "Scikit-learn", "Pandas", "Machine Learning"],
@@ -222,10 +377,10 @@ export const projects: ProjectItem[] = [
       en: "E-Commerce Website",
     },
     description: {
-      tr: "Ürün listeleme, sepet yönetimi ve kullanıcı arayüzü içeren tam kapsamlı e-ticaret web uygulaması.",
-      en: "Full-featured e-commerce web application with product listing, cart management, and user interface.",
+      tr: "Ürün kataloğu, dinamik sepet yönetimi ve modern duyarlı kullanıcı arayüzü sunan web uygulaması.",
+      en: "Full-featured e-commerce web application with product catalog, cart management, and responsive user interface.",
     },
-    technologies: ["JavaScript", "HTML", "CSS", "Web Development"],
+    technologies: ["JavaScript", "TypeScript", "HTML5", "CSS3", "Web Development"],
     github: "https://github.com/emrahsahn/E-Commerce-Website",
   },
   {
@@ -234,8 +389,8 @@ export const projects: ProjectItem[] = [
       en: "SQL Data Warehouse Project",
     },
     description: {
-      tr: "Veri ambalama, ETL süreçleri ve analitik sorgular için tasarlanmış SQL tabanlı veri ambarı projesi.",
-      en: "SQL-based data warehouse project designed for data modeling, ETL processes, and analytical queries.",
+      tr: "Veri modelleme, ETL süreçleri ve analitik raporlama sorguları için tasarlanmış kapsamlı SQL tabanlı veri ambarı projesi.",
+      en: "SQL-based data warehouse project designed for dimensional data modeling, ETL processes, and analytical queries.",
     },
     technologies: ["SQL", "Data Modeling", "ETL", "Database Design"],
     period: "2026",
@@ -245,28 +400,70 @@ export const projects: ProjectItem[] = [
 
 export const skillCategories = [
   {
-    key: "programming",
-    skills: ["Python", "C++", "Java", "TypeScript", "JavaScript", "SQL"],
+    key: "languages",
+    skills: ["C++", "Java", "Python", "TypeScript", "JavaScript", "C#", "SQL"],
   },
   {
     key: "ai",
     skills: [
-      "PyTorch",
-      "TensorFlow",
-      "Keras",
-      "OpenCV",
-      "scikit-learn",
       "LangChain",
       "LangGraph",
       "LlamaIndex",
+      "PyTorch",
+      "TensorFlow",
+      "Scikit-learn",
+      "OpenCV",
+      "Computer Vision",
+      "Deep Learning",
+      "NLP",
+      "Vector Databases",
     ],
   },
   {
-    key: "web",
-    skills: ["Next.js", "React", "FastAPI", "Spring Boot", "Tailwind CSS"],
+    key: "backend_web",
+    skills: [
+      "FastAPI",
+      "Spring Boot",
+      "REST API",
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Node.js",
+    ],
+  },
+  {
+    key: "data",
+    skills: [
+      "Pandas",
+      "NumPy",
+      "Data Analytics",
+      "EDA",
+      "Data Visualization",
+      "SQL",
+    ],
   },
   {
     key: "tools",
-    skills: ["Git", "Docker", "Jupyter", "VS Code"],
+    skills: [
+      "Git",
+      "Docker",
+      "JUnit",
+      "Gradio",
+      "Linux",
+      "VS Code",
+      "Jupyter",
+    ],
   },
 ];
+
+export const coreHighlights = [
+  "C++ & Java (OOP)",
+  "Python & AI Agents",
+  "LangChain & LangGraph",
+  "PyTorch & OpenCV",
+  "TypeScript & Next.js",
+  "Spring Boot & FastAPI",
+  "SQL & Data Analytics",
+];
+

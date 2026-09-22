@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Github, Linkedin, Mail, ArrowDown } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
+import { coreHighlights } from "@/lib/data";
 
 export default function Hero() {
   const t = useTranslations("hero");
@@ -71,7 +72,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8"
         >
           <a
             href="#projects"
@@ -87,10 +88,27 @@ export default function Hero() {
           </a>
         </motion.div>
 
+        {/* Core highlight tags */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.48 }}
+          className="flex flex-wrap items-center justify-center gap-2 max-w-2xl mx-auto mb-10"
+        >
+          {coreHighlights.map((highlight) => (
+            <span
+              key={highlight}
+              className="px-3 py-1 text-xs md:text-sm rounded-full bg-white/5 border border-white/10 text-white/70 backdrop-blur-md hover:border-accent-purple/50 hover:text-white hover:bg-white/10 transition-all duration-300"
+            >
+              {highlight}
+            </span>
+          ))}
+        </motion.div>
+
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
+          transition={{ duration: 0.5, delay: 0.55 }}
           className="flex items-center justify-center gap-6"
         >
           {socialLinks.map(({ icon: Icon, href, label }) => (

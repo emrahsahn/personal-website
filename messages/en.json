@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "Emrah Şahin | Software Engineer",
-    "description": "Portfolio of a software engineer specializing in AI, computer vision, and agentic workflows."
+    "title": "Emrah Şahin | Software Engineer (AI, OOP & Full-Stack)",
+    "description": "Portfolio of a Software Engineer specializing in LLMs, Agentic Workflows, Computer Vision, C++, Java, Python, TypeScript, and modern web architectures."
   },
   "nav": {
     "about": "About",
@@ -14,23 +14,19 @@
   "hero": {
     "greeting": "Hi, I'm",
     "name": "Emrah Şahin",
-    "title": "Software Engineer | AI & Computer Vision",
-    "subtitle": "I build scalable, production-ready AI solutions in LLMs, Generative AI, and Agentic Workflows.",
+    "title": "Software Engineer — LLMs, Agentic AI & Full-Stack",
+    "subtitle": "Building production-ready AI solutions in LLMs, Generative AI & Agentic Workflows, alongside robust OOP architectures in C++, Java, and modern full-stack systems with TypeScript & Next.js.",
     "ctaProjects": "View My Projects",
     "ctaContact": "Get In Touch"
   },
   "about": {
     "title": "About Me",
-    "summary": "As a Software Engineer, I develop AI agents based on LangChain, LangGraph, and LlamaIndex. During my internship at Havelsan, I gained experience in hallucination reduction and model monitoring by benchmarking the technical and ethical performance of modern AI models. While strengthening my OOP foundation with C++ and Java, I aim to build scalable AI solutions with Python, FastAPI, and SQL.",
+    "summary": "Recent Software Engineering graduate (incoming M.Sc. in Computer Engineering at Kocaeli University) specializing in Large Language Models (LLMs), Generative AI, and agentic workflows, with hands-on experience building AI agents using LangChain, LangGraph, and LlamaIndex. During my internship at Havelsan, gained deep expertise in technical and ethical benchmarking of modern AI models, including hallucination reduction and model monitoring. Strong foundation in Object-Oriented Programming (C++, Java) combined with practical full-stack and backend skills in Python, FastAPI, Next.js, TypeScript, and SQL to deliver scalable, production-ready software solutions.",
     "education": {
-      "title": "Education",
-      "degree": "Software Engineering",
-      "university": "Kocaeli University of Health and Technology",
-      "period": "2022 – 2026",
-      "gpa": "GPA: 3.5",
-      "scholarship": "Full Scholarship",
-      "thesis": "TÜBİTAK 2209 Supported Thesis"
-    }
+      "title": "Education & Academic Background"
+    },
+    "courseworkTitle": "Relevant Coursework",
+    "languagesTitle": "Languages"
   },
   "experience": {
     "title": "Experience"
@@ -43,12 +39,13 @@
     "showLess": "Show less"
   },
   "skills": {
-    "title": "Skills",
+    "title": "Skills & Expertise",
     "categories": {
-      "programming": "Programming",
-      "ai": "AI & Machine Learning",
-      "web": "Web Development",
-      "tools": "Tools"
+      "languages": "Languages & OOP",
+      "ai": "AI, ML & Agentic Systems",
+      "backend_web": "Backend & Web Development",
+      "data": "Data Analytics & Engineering",
+      "tools": "Tools & DevOps"
     }
   },
   "contact": {
@@ -75,3 +72,4 @@
     "rights": "All rights reserved."
   }
 }
+
