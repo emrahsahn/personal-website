@@ -1,14 +1,18 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { useTranslations } from "next-intl";
-import { Menu, X } from "lucide-react";
+import { useTranslations, useLocale } from "next-intl";
+import { Menu, X, Smartphone } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import { navLinks } from "@/lib/site-config";
+import { useViewMode } from "@/context/ViewModeContext";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Navbar() {
   const t = useTranslations("nav");
+  const locale = useLocale();
+  const isTr = locale === "tr";
+  const { setMode } = useViewMode();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
@@ -76,8 +80,16 @@ export default function Navbar() {
             ))}
           </div>
 
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center gap-3">
             <LanguageSwitcher />
+            <button
+              onClick={() => setMode("ios")}
+              className="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white flex items-center gap-1.5 shadow-md shadow-purple-500/20 transition-all cursor-pointer"
+              title={isTr ? "iPhone arayüzüne dön" : "Switch to iPhone mode"}
+            >
+              <Smartphone size={13} className="text-purple-200" />
+              <span>{isTr ? "iPhone Modu" : "iPhone Mode"}</span>
+            </button>
           </div>
 
           {/* Mobile menu button */}
@@ -105,8 +117,18 @@ export default function Navbar() {
                 {t(link.key)}
               </Link>
             ))}
-            <div className="pt-2">
+            <div className="pt-3 flex items-center justify-between border-t border-white/10">
               <LanguageSwitcher />
+              <button
+                onClick={() => {
+                  setIsOpen(false);
+                  setMode("ios");
+                }}
+                className="px-3 py-1.5 rounded-full text-xs font-semibold bg-gradient-to-r from-purple-600 to-indigo-600 text-white flex items-center gap-1.5 shadow"
+              >
+                <Smartphone size={13} className="text-purple-200" />
+                <span>{isTr ? "iPhone Modu" : "iPhone Mode"}</span>
+              </button>
             </div>
           </div>
         </div>
