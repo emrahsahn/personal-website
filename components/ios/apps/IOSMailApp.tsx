@@ -38,6 +38,13 @@ export default function IOSMailApp({ isOpen = true, onClose }: MailAppProps) {
   const [body, setBody] = useState("");
   const [isSent, setIsSent] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  React.useEffect(() => {
+    if (typeof navigator !== "undefined") {
+      setIsMobile(/Android|iPhone|iPad|iPod/i.test(navigator.userAgent));
+    }
+  }, []);
 
   const inboxMails = [
     {
@@ -131,12 +138,47 @@ export default function IOSMailApp({ isOpen = true, onClose }: MailAppProps) {
     setTimeout(() => setCopied(false), 2200);
   };
 
-  const handleOpenGmailWeb = () => {
+  const handleOpenGmail = () => {
     const emailSubject = subject || (isTr ? "Portfolyo İletişim Mesajı" : "Portfolio Contact");
     const emailBody = `Merhaba Emrah,\n\nGönderen: ${senderName || "Ziyaretçi"} (${senderEmail || "E-posta girilmedi"})\n\n${body}`;
-    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
-      siteConfig.email
-    )}&su=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+    const encTo = encodeURIComponent(siteConfig.email);
+    const encSubject = encodeURIComponent(emailSubject);
+    const encBody = encodeURIComponent(emailBody);
+
+    const isMobileDevice =
+      typeof navigator !== "undefined" &&
+      /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+    if (isMobileDevice) {
+      const isIOS =
+        typeof navigator !== "undefined" &&
+        /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+      if (isIOS) {
+        // iOS Gmail app URI scheme
+        const gmailAppUrl = `googlegmail:///co?to=${encTo}&subject=${encSubject}&body=${encBody}`;
+        const webFallback = `https://mail.google.com/mail/?view=cm&fs=1&to=${encTo}&su=${encSubject}&body=${encBody}`;
+
+        const startTime = Date.now();
+        window.location.href = gmailAppUrl;
+
+        // Fallback to web if Gmail app is not installed
+        setTimeout(() => {
+          if (Date.now() - startTime < 1600) {
+            window.open(webFallback, "_blank");
+          }
+        }, 700);
+        return;
+      } else {
+        // Android native mailto (triggers Gmail app automatically on Android)
+        const mailtoUrl = `mailto:${siteConfig.email}?subject=${encSubject}&body=${encBody}`;
+        window.location.href = mailtoUrl;
+        return;
+      }
+    }
+
+    // Desktop: Open Gmail in web browser directly
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encTo}&su=${encSubject}&body=${encBody}`;
     window.open(gmailUrl, "_blank");
   };
 
@@ -226,11 +268,15 @@ export default function IOSMailApp({ isOpen = true, onClose }: MailAppProps) {
                 <div className="w-full pt-2 flex flex-col gap-2">
                   <button
                     type="button"
-                    onClick={handleOpenGmailWeb}
+                    onClick={handleOpenGmail}
                     className="w-full py-2.5 px-3 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-semibold flex items-center justify-center gap-2 transition-colors cursor-pointer"
                   >
                     <ExternalLink size={13} />
-                    <span>{isTr ? "Gmail Web'de Açarak Gönder" : "Send via Gmail Web"}</span>
+                    <span>
+                      {isMobile
+                        ? (isTr ? "Gmail Uygulamasında Aç (Taslak)" : "Open in Gmail App (Draft)")
+                        : (isTr ? "Gmail'de Aç (Yeni Sekme)" : "Open in Gmail (New Tab)")}
+                    </span>
                   </button>
 
                   <button
@@ -404,11 +450,11 @@ export default function IOSMailApp({ isOpen = true, onClose }: MailAppProps) {
                     <div className="flex items-center gap-3">
                       <button
                         type="button"
-                        onClick={handleOpenGmailWeb}
+                        onClick={handleOpenGmail}
                         className="text-red-400 hover:text-red-300 flex items-center gap-1 font-medium transition-colors"
                       >
                         <ExternalLink size={11} />
-                        <span>Gmail</span>
+                        <span>{isMobile ? "Gmail App" : "Gmail"}</span>
                       </button>
                       <span className="text-neutral-600">•</span>
                       <button
