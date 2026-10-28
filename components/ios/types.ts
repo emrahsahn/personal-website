@@ -6,7 +6,9 @@ export type IOSAppId =
   | "mail"
   | "files"
   | "phone"
-  | "skills";
+  | "skills"
+  | "translate"
+  | "web";
 
 export interface IOSAppMeta {
   id: IOSAppId;
@@ -20,6 +22,8 @@ export interface IOSAppMeta {
     | "files"
     | "phone"
     | "skills"
+    | "translate"
+    | "web"
     | "github"
     | "linkedin";
   isExternal?: boolean;

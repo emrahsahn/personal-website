@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useViewMode } from "@/context/ViewModeContext";
 import { IOSAppId } from "./types";
 import IOSDeviceFrame from "./IOSDeviceFrame";
 import IOSHomeScreen from "./IOSHomeScreen";
@@ -13,11 +14,17 @@ import IOSSettingsApp from "./apps/IOSSettingsApp";
 import IOSFilesApp from "./apps/IOSFilesApp";
 import IOSPhoneApp from "./apps/IOSPhoneApp";
 import IOSSkillsApp from "./apps/IOSSkillsApp";
+import IOSTranslateApp from "./apps/IOSTranslateApp";
 
 export default function IOSExperience() {
+  const { setMode } = useViewMode();
   const [activeApp, setActiveApp] = useState<IOSAppId | null>(null);
 
   const handleOpenApp = (appId: IOSAppId) => {
+    if (appId === "web") {
+      setMode("classic");
+      return;
+    }
     setActiveApp(appId);
   };
 
@@ -53,6 +60,8 @@ export default function IOSExperience() {
         );
       case "skills":
         return <IOSSkillsApp isOpen={true} onClose={handleCloseApp} />;
+      case "translate":
+        return <IOSTranslateApp isOpen={true} onClose={handleCloseApp} />;
       default:
         return null;
     }

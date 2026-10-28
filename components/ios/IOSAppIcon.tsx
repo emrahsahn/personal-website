@@ -12,6 +12,8 @@ import {
   Folder,
   Phone,
   Layers,
+  Languages,
+  Globe,
 } from "lucide-react";
 
 export type IconType =
@@ -23,6 +25,8 @@ export type IconType =
   | "files"
   | "phone"
   | "skills"
+  | "translate"
+  | "web"
   | "github"
   | "linkedin";
 
@@ -149,6 +153,26 @@ export default function IOSAppIcon({
         return (
           <div className="w-full h-full bg-gradient-to-b from-[#1b81fc] via-[#0b6ce7] to-[#0451b8] flex items-center justify-center text-white">
             <Layers size={26} className="drop-shadow stroke-[1.8]" />
+          </div>
+        );
+
+      case "translate":
+        return (
+          <div className="w-full h-full bg-gradient-to-b from-[#0ea5e9] via-[#0284c7] to-[#1d4ed8] flex flex-col items-center justify-center text-white relative overflow-hidden">
+            <Languages size={26} className="drop-shadow stroke-[2]" />
+            <div className="absolute bottom-1 px-1.5 py-[0.5px] rounded bg-black/25 text-[7px] font-bold font-mono tracking-wider">
+              TR · EN
+            </div>
+          </div>
+        );
+
+      case "web":
+        return (
+          <div className="w-full h-full bg-gradient-to-b from-[#8b5cf6] via-[#6366f1] to-[#3b82f6] flex flex-col items-center justify-center text-white relative overflow-hidden">
+            <Globe size={26} className="drop-shadow stroke-[2]" />
+            <div className="absolute bottom-1 px-1.5 py-[0.5px] rounded bg-black/25 text-[7px] font-bold font-mono tracking-wider">
+              WEB
+            </div>
           </div>
         );
 

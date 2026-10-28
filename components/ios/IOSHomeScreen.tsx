@@ -93,6 +93,19 @@ export default function IOSHomeScreen({
             iconType="phone"
             onClick={() => onOpenApp("phone")}
           />
+
+          <IOSAppIcon
+            name={isTr ? "Çeviri" : "Translate"}
+            iconType="translate"
+            badge={locale.toUpperCase()}
+            onClick={() => onOpenApp("translate")}
+          />
+
+          <IOSAppIcon
+            name={isTr ? "Klasik Web" : "Classic Web"}
+            iconType="web"
+            onClick={() => onOpenApp("web")}
+          />
         </div>
       </div>
 
