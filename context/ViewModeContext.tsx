@@ -22,27 +22,42 @@ export function ViewModeProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     setMounted(true);
     if (typeof window !== "undefined") {
-      // Clear legacy saved classic mode so every new open starts in iOS mode
-      localStorage.removeItem("emrah_portfolio_mode");
-
       const params = new URLSearchParams(window.location.search);
       const queryMode = params.get("mode") || params.get("view");
       if (queryMode === "classic" || queryMode === "web") {
         setModeState("classic");
+        sessionStorage.setItem("emrah_portfolio_session_mode", "classic");
         return;
       }
-      // Explicit default is always iOS
-      setModeState("ios");
-    }
+      if (queryMode === "ios") {
+        setModeState("ios");
+        sessionStorage.setItem("emrah_portfolio_session_mode", "ios");
+        return;
+      }
 
-    const savedWallpaper = localStorage.getItem("emrah_portfolio_wallpaper");
-    if (savedWallpaper) {
-      setWallpaperState(savedWallpaper);
+      // Check current tab session state
+      const sessionMode = sessionStorage.getItem(
+        "emrah_portfolio_session_mode"
+      ) as ViewMode | null;
+      if (sessionMode === "classic" || sessionMode === "ios") {
+        setModeState(sessionMode);
+      } else {
+        // First-time visit in this browser tab always starts in iOS mode
+        setModeState("ios");
+      }
+
+      const savedWallpaper = localStorage.getItem("emrah_portfolio_wallpaper");
+      if (savedWallpaper) {
+        setWallpaperState(savedWallpaper);
+      }
     }
   }, []);
 
   const setMode = (newMode: ViewMode) => {
     setModeState(newMode);
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("emrah_portfolio_session_mode", newMode);
+    }
   };
 
   const toggleMode = () => {
